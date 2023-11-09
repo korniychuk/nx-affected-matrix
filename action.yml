@@ -74,6 +74,9 @@ runs:
         script: |
           const { default: setEnv } = require('${{ github.action_path }}/set-env.js');
           const { default: main } = require('${{ github.action_path }}/main.js');
+          
+          console.log(`The current Node.js version is ${process.version}`);
+
 
           setEnv(${{ toJSON(inputs) }}, process);
           await main(context, core, __original_require__);
